@@ -1,0 +1,14 @@
+{
+  "app": "test133",
+  "platform": "node",
+  "port": 8080,
+  "node": {
+    "version": "20"
+  },
+  "build": {
+    "command": "npm install && npm run build:server"
+  },
+  "start": {
+    "command": "node apps/server/dist/db/migrate.js && npm run start -w @game-platform/server"
+  }
+}

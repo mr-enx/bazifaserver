@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:wght@600;700&family=Nunito+Sans:wght@400;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Mikhak';
+  src: url('./assets/fonts/Mikhak-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mikhak';
+  src: url('./assets/fonts/Mikhak-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mikhak';
+  src: url('./assets/fonts/Mikhak-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mikhak';
+  src: url('./assets/fonts/Mikhak-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "Nunito Sans", ui-sans-serif, sans-serif;
+  background: #f5f0e8;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  touch-action: manipulation;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #1f6299ff;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+.profile-bottom-sheet-safe {
+  max-height: min(78vh, 720px);
+  touch-action: none;
+}
+
+.font-mikhak {
+  font-family: 'Mikhak', sans-serif;
+}
+@keyframes roundOverlayEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.75) translateY(30px);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1.06) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-round-overlay {
+  animation: roundOverlayEnter 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  
+  /* جلوگیری از انتخاب متن */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  
+  /* جلوگیری از باز شدن منوی کلیک راست/نگه داشتن طولانی روی عکس و لینک در آیفون */
+  -webkit-touch-callout: none;
+  
+  /* جلوگیری از درگ کردن عکس ها */
+  -webkit-user-drag: none;
+}
+
+/* اگر در بازی فرم ورود (input/textarea) دارید، باید قابلیت سلکت را فقط برای آن‌ها برگردانید: */
+input, textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+@font-face {
+  font-family: 'Supercell Magic';
+  src: url('/fonts/supercell-magic-webfont.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
