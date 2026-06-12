@@ -1,14 +1,14 @@
 import 'dotenv/config';
-import { db } from '../db';
-import { castleUpgrades, games } from '../db/schema';
+import { db } from '../db/index.js';
+import { castleUpgrades, games } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 async function seedCastleUpgrades() {
   console.log('Seeding castle upgrades...');
   try {
     const allGames = await db.select().from(games);
-    const ticTacToe = allGames.find(g => g.slug === 'tic_tac_toe');
-    const imageGuess = allGames.find(g => g.slug === 'image_guess');
+    const ticTacToe = allGames.find((g: any) => g.slug === 'tic_tac_toe');
+    const imageGuess = allGames.find((g: any) => g.slug === 'image_guess');
 
     if (!ticTacToe || !imageGuess) {
       console.error('Required games not found in database. Please seed games first.');

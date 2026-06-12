@@ -45,7 +45,7 @@ export type {
   OutgoingFriendRequestItem,
   RespondToFriendRequestResponse
 } from './friend.js';
-export type { Game, GameId, GameMetadata, GameResultItem, GameResultOutcome, GameType } from './game.js';
+export type { Game, GameId, GameMetadata, GameResultItem, GameResultOutcome, GameType, LeaderboardEntry, LeaderboardResponse } from './game.js';
 export type {
   ChessColor,
   ChessLastMove,

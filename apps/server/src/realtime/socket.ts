@@ -1,7 +1,12 @@
 import type { AuthUser, ClientToServerEvents, GameFinishedResult, ServerToClientEvents, VoiceUser } from '@game-platform/shared';
 import { SOCKET_EVENTS } from '@game-platform/shared';
 import type { FastifyInstance } from 'fastify';
-import type { Consumer, Producer, Router, WebRtcTransport, Worker } from 'mediasoup/node/lib/types';
+import type { types as MediasoupTypes } from 'mediasoup';
+type Consumer = MediasoupTypes.Consumer;
+type Producer = MediasoupTypes.Producer;
+type Router = MediasoupTypes.Router;
+type WebRtcTransport = MediasoupTypes.WebRtcTransport;
+type Worker = MediasoupTypes.Worker;
 import { Server, type Socket } from 'socket.io';
 import { env } from '../config/env.js';
 import { GameRuntimeError, GameRuntimeService } from '../game-runtime/runtime.service.js';
@@ -733,7 +738,7 @@ const transport = await room.router.createWebRtcTransport({
           io.to(roomId).emit(SOCKET_EVENTS.voiceSfuProducerClosed, { roomId, producerId: producer.id, userId: socket.data.user.id });
         });
 
-        producer.on('close', () => {
+        producer.on('@close', () => {
           room.producers.delete(producer.id);
         });
 

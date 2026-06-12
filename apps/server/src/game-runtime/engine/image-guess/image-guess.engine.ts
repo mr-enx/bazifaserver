@@ -34,6 +34,8 @@ export class ImageGuessEngine implements GameEngine {
       players: enginePlayers,
       score: Object.fromEntries(enginePlayers.map((player) => [player.userId, 0])),
       currentTurnUserId: enginePlayers[0]?.userId ?? null,
+      turnStartedAt: null,
+      turnDurationSeconds: 30,
       status: 'playing',
       matchWinnerUserId: null
     };

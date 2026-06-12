@@ -45,7 +45,7 @@ export type ActiveRoomMatch = {
   state: unknown;
 };
 
-export type RoomDetails = RoomListItem & {
+export type RoomDetails = Omit<RoomListItem, 'players'> & {
   game: Game;
   owner: AuthUser;
   players: RoomPlayer[];

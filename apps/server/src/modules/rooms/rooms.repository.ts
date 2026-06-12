@@ -36,7 +36,24 @@ export type RoomCoreRow = RoomSummaryRow & {
   game: Game;
   owner: Pick<
     User,
-    'id' | 'username' | 'role' | 'fullName' | 'birthDateShamsi' | 'province' | 'city' | 'gender' | 'avatarUrl' | 'gem' | 'xp'
+    | 'id'
+    | 'username'
+    | 'role'
+    | 'fullName'
+    | 'birthDateShamsi'
+    | 'province'
+    | 'city'
+    | 'gender'
+    | 'bio'
+    | 'avatarUrl'
+    | 'gem'
+    | 'xp'
+    | 'castleLevel'
+    | 'xpMinerLevel'
+    | 'gemMinerLevel'
+    | 'lastGemCollectionAt'
+    | 'lastXpCollectionAt'
+    | 'lastChangelogVersion'
   >;
 };
 
@@ -81,6 +98,7 @@ export class RoomsRepository extends Repository {
         ownerAvatarUrl: users.avatarUrl,
         settings: rooms.settings,
         status: rooms.status,
+        isLocked: rooms.isLocked,
         currentPlayerCount: sql<number>`count(${roomPlayers.id})::int`,
         minPlayers: games.minPlayers,
         maxPlayers: games.maxPlayers,
@@ -164,6 +182,7 @@ export class RoomsRepository extends Repository {
         ownerAvatarUrl: users.avatarUrl,
         settings: rooms.settings,
         status: rooms.status,
+        isLocked: rooms.isLocked,
         currentPlayerCount: sql<number>`count(${roomPlayers.id})::int`,
         minPlayers: games.minPlayers,
         maxPlayers: games.maxPlayers,
@@ -178,9 +197,16 @@ export class RoomsRepository extends Repository {
           province: users.province,
           city: users.city,
           gender: users.gender,
+          bio: users.bio,
           avatarUrl: users.avatarUrl,
           gem: users.gem,
-          xp: users.xp
+          xp: users.xp,
+          castleLevel: users.castleLevel,
+          xpMinerLevel: users.xpMinerLevel,
+          gemMinerLevel: users.gemMinerLevel,
+          lastGemCollectionAt: users.lastGemCollectionAt,
+          lastXpCollectionAt: users.lastXpCollectionAt,
+          lastChangelogVersion: users.lastChangelogVersion
         }
       })
       .from(rooms)

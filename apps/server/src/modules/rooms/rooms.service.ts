@@ -133,8 +133,12 @@ function toDetails(core: RoomCoreRow, players: RoomPlayer[], activeMatch: Active
     minPlayers: core.minPlayers,
     game: toGame(core.game),
     owner: (() => {
-      const { birthDateShamsi, ...restOwner } = core.owner;
-      return { ...restOwner, age: resolveUserAge({ birthDateShamsi }) };
+      return {
+        ...core.owner,
+        age: resolveUserAge(core.owner),
+        lastGemCollectionAt: core.owner.lastGemCollectionAt.toISOString(),
+        lastXpCollectionAt: core.owner.lastXpCollectionAt.toISOString()
+      };
     })(),
     players,
     canStart,

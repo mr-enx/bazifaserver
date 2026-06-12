@@ -232,12 +232,12 @@ export class AuthService {
     return users.map(toAdminUserItem);
   }
 
-  async getUserProfile(userId: string): Promise<PublicUserRow> {
+  async getUserProfile(userId: string): Promise<AuthUser> {
     const user = await this.authRepository.findUserById(userId);
     if (!user) {
       throw new AuthError('User not found', 404);
     }
-    return toPublicUserRow(user);
+    return toAuthUser(toPublicUserRow(user));
   }
 
   async deleteUserAsAdmin(userId: string, currentUser: AuthUser): Promise<{ success: true }> {
